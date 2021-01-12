@@ -26,5 +26,18 @@ namespace Mvvm.ViewModels
                 }
             }
         }
+        public string Name
+        {
+            get { return Friend.Name; }
+            set
+            {
+                if (Friend.Name != value )
+                {
+                    Friend.Name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
+
     }
 }
