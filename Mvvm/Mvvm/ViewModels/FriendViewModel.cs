@@ -14,6 +14,17 @@ namespace Mvvm.ViewModels
         {
             Friend = new Friend();
         }
-
+        public FriendsListViewModel ListViewModel
+        {
+            get { return lvm; }
+            set
+            {
+                if (lvm != value)
+                {
+                    lvm = value;
+                    OnPropertyChsnged("ListViewModle");
+                }
+            }
+        }
     }
 }
