@@ -20,6 +20,28 @@ namespace Mvvm.ViewModels
         public INavigation Navigation { get; set; }
         public FriendsListViewModel()
         {
+            Friends = new ObservableCollection<FriendViewModel>();
+            CreateFriendCommand = new Command(CreateFriend);
+            DeleteFriendCommand = new Command(DeleteFriend);
+            SaveFriendCommand = new Command(SaveFriend);
+            BackCommand = new Command(Back);
+        }
+        public FriendsListViewModel SelectedFriend
+        {
+            get { return selectedFriend; }
+            set
+            {
+                if (selectedFriend != value)
+                {
+                    FriendViewModel tempFriend = value;
+                    selectedFriend = null;
+                    OnPropertyChanged("SelectedFriend");
+                    Nvigstion.PushAsync(new FriendPage(tempFriend));
+                }
+            }
+        }
+        protected void OnPropertyChanged(string propName)
+        {
 
         }
     }
