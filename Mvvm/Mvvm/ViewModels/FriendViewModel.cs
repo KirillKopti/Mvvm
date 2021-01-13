@@ -22,7 +22,7 @@ namespace Mvvm.ViewModels
                 if (lvm != value)
                 {
                     lvm = value;
-                    OnPropertyChsnged("ListViewModle");
+                    OnPropertyChanged("ListViewModle");
                 }
             }
         }
@@ -71,6 +71,10 @@ namespace Mvvm.ViewModels
                     ((!string.IsNullOrEmpty(Email.Trim)));
             }
         }
-
+        protected void OnPropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
     }
 }
