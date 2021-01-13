@@ -66,9 +66,9 @@ namespace Mvvm.ViewModels
         {
             get
             {
-                return ((!string.IsNullOrEmpty(Name.Trim))) ||
-                    ((!string.IsNullOrEmpty(Phone.Trim)))  ||
-                    ((!string.IsNullOrEmpty(Email.Trim)));
+                return ((!string.IsNullOrEmpty(Name.Trim())) ||
+                    (!string.IsNullOrEmpty(Email.Trim())) ||
+                    (!string.IsNullOrEmpty(Phone.Trim()));
             }
         }
         protected void OnPropertyChanged(string propName)
