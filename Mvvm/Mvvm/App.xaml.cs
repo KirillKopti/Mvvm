@@ -1,6 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Mvvm.ViewModels;
 
 namespace Mvvm
 {
@@ -8,9 +8,7 @@ namespace Mvvm
     {
         public App()
         {
-            InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new FriendsListPage());
         }
 
         protected override void OnStart()
