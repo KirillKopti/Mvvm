@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mvvm.Views.FriendPage">
-  <ContentView.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
-  </ContentView.Content>
-</ContentView>
+             x:Class="Mvvm.Views.FriendPage" Title="Информация о друге">
+    <StackLayout>
+        <StackLayout x:Name="friendStake">
+            <Label Text="Имя"/>
+            <Entry Text="{Binding Name}" FontSize="Medium"/>
+            <Label Text="Электронная почта"/>
+            <Entry Text="{Binding Email}" FontSize="Medium"/>
+            <Label Text="Телефон"/>
+            <Entry Text="{Binding Phone}" FontSize="Medium"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
