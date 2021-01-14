@@ -17,7 +17,9 @@ namespace Mvvm.ViewModels
         public ICommand SaveFriendCommand { protected set; get; }
         public ICommand BackCommand { protected set; get; }
         FriendViewModel selectedFriend;
+
         public INavigation Navigation { get; set; }
+
         public FriendsListViewModel()
         {
             Friends = new ObservableCollection<FriendViewModel>();
@@ -42,7 +44,35 @@ namespace Mvvm.ViewModels
         }
         protected void OnPropertyChanged(string propName)
         {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
 
+        private void CreateFriend()
+        {
+            Navigation.PushAsync(new FriendPage(new FriendViewModel() { ListViewModel = this }));
+        }
+        private void Back()
+        {
+            Navigation.PopAsync();
+        }
+        private void SaveFriend(object friendObject)
+        {
+            FriendViewModel friend = friendObject as FriendViewModel;
+            if (friend != null && friend.IsValid)
+            {
+                Friends.Add(friend);
+            }
+            Back();
+        }
+        private void DeleteFriend(object friendObject)
+        {
+            FriendViewModel friend = friendObject as FriendViewModel;
+            if(friend != null)
+            {
+                Friends.Remove(friend);
+            }
+            Back();
         }
     }
 }
